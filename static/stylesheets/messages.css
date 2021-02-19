@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: arial, sans-serif;
+    background-color: gainsboro;
+    margin: 0 10px 10px 10px;
+}
+
+#frame-self {
+    text-align: right;
+}
+
+.member {
+    font-size: 12px;
+    font-weight: bold;
+    color: gray;
+    margin: 10px 0 4px;
+}
+
+#frame-self .member {
+    display: none;
+}
+
+#message {
+    text-align: left;
+	text-align: justify;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 0;
+    padding: 5px 8px;
+    border-radius: 0 15px 15px 15px;
+    background-color: white;
+    max-width: 80%;
+}
+
+#frame-self #message {
+    border-radius: 15px 0 15px 15px;
+    background-color: rgb(255, 190, 80);
+}
+
+.date-frame {
+    position: sticky;
+    top: 10px;
+    text-align: center;
+    margin: 10px 0 5px;
+}
+
+.date {
+    display: inline-block;
+    font-size: 12px;
+    color: white;
+    background: gray;
+    border-radius: 12px;
+    padding: 3px 8px;
+    width: 70px;
+}
+
+.time {
+    vertical-align: bottom;
+    display: inline-block;
+    max-width: 20%;
+    color: gray;
+    font-size: 10px;
+    padding: 0 5px 4px;
+}
+
+#alert-newmes {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0 5px;
+    text-decoration: none;
+}
+
+#scroll-bottom {
+    display: block;
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    height: 35px;
+    width: 35px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15%;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+#scroll-bottom img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    padding: 10%;
+}

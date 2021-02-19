@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <div id="fadeIn-1"><h2>このサイトについて</h2></div>
+    <h3><div id="fadeIn-2"><span id="underline-h3">工夫したこと</span></div></h3>
+    <div id="fadeIn-3">
+        <p>
+            どこをクリックすることができるかを分かりやすくするために、hover時に背景や大きさが変わるようにした。また、ブラウザ間の挙動の違いをできるだけ抑えるため、複数のブラウザで動作を確認した（Safari・Chrome・Firefox）。さらに、スマートフォンでも閲覧しやすいように配慮した。<br><br>
+            チャットの画面では、リロードするたびにすべて更新するのではなく、追加する分だけ読み込むようにして、通信量を最低限に抑えた。
+        </p>
+    </div>
+
+{% endblock %}

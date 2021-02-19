@@ -1,0 +1,21 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <div id="fadeIn-1"><h2>ホーム</h2></div>
+    <h3><div id="fadeIn-2"><span id="underline-h3">自己紹介</span></div></h3>
+    <div id="fadeIn-3">
+        <p>
+        工学部地球工学科3回生の本西亮太です。
+        </p>
+        <p>
+        趣味でiOSアプリケーションを作っています。<br>
+        <a href="{{url_for('main', name='release')}}">こちら</a>からご覧いただけます。<br>
+        あと、暇な時に<a href="{{url_for('main', name='picture')}}">お絵かき</a>をしています。<br>
+        </p>
+        <p>
+        どちらもあくまで趣味なので、お手柔らかにお願いしますm(_ _)m
+        </p>
+    </div>
+
+{% endblock %}

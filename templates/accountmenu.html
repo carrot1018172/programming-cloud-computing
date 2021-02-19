@@ -1,0 +1,25 @@
+{% if "loginaccount" in session %}
+    <a href="{{url_for('main', name='logout')}}" id="other">ログアウト</a>
+    <a href="{{url_for('main', name='setting')}}"
+    {% if path == "setting" %}
+        id="current"
+    {% else %}
+        id="other"
+    {% endif %}
+    >アカウント情報</a>
+{% else %}
+    <a href="{{url_for('main', name='login')}}"
+        {% if path == "login" %}
+            id="current"
+        {% else %}
+            id="other"
+        {% endif %}
+    >ログイン</a>
+    <a href="{{url_for('main', name='apply')}}"
+        {% if path == "apply" %}
+            id="current"
+        {% else %}
+            id="other"
+        {% endif %}
+    >新規登録</a>
+{% endif %}

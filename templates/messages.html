@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="robots" content="noindex">
+        <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='stylesheets/messages.css')}}">
+        <script src="{{url_for('static', filename='scripts/jquery-3.5.1.min.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='scripts/messages.js')}}"></script>
+    </head>
+    <body>
+        <a id="scroll-bottom" href="javascript:void(0);" onclick="window.scrollTo(0, document.body.scrollHeight);"><img src="{{url_for('static', filename='images/down.png')}}"></a>
+        <a id="alert-newmes" href="javascript:void(0);" onclick="window.scrollTo(0, document.body.scrollHeight);">新着メッセージがあります</a>
+    </body>
+</html>

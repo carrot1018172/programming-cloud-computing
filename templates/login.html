@@ -1,0 +1,26 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/login.js')}}"></script>
+
+    <div id="fadeIn-1"><h2>ログイン</h2></div>
+    {% if "loginaccount" in session %}
+        <div id="fadeIn-2">
+            <p>
+                ログイン済みです。
+            </p>
+        </div>
+    {% else %}
+        <form method="post" action="">
+            <div id="fadeIn-2">
+                <input type="text" name="account" oninput="inputChanged()" placeholder="アカウント"/ required><br>
+                <input type="password" name="password" oninput="inputChanged()" placeholder="パスワード"/ required><br><br>
+            </div>
+            <div id="fadeIn-3">
+                <input type="submit" value="ログイン"/>
+            </div>
+        </form>
+    {% endif %}
+
+{% endblock %}

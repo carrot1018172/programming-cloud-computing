@@ -1,0 +1,741 @@
+* {
+    box-sizing: border-box;
+    transition-property: background, opacity, box-shadow, transform;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+}
+
+body {
+    top: 0;
+    font-family: arial, sans-serif;
+    margin: 0;
+    color: #323232;
+    background: #f0f0f0;
+    min-height: 100vh;
+}
+
+a {
+    cursor: pointer;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"]{
+    -webkit-appearance: none;
+    font-size: 16px;
+    line-height: 24px;
+	width: 100%;
+	padding: 0.3em;
+	border: 2px solid #69D7F5;
+    border-radius: 3px;
+    margin: 5px 0;
+}
+
+input[type="checkbox"] {
+    line-height: 1em;
+}
+
+label {
+    vertical-align: middle;
+}
+
+input[type="submit"]{
+    line-height: 30px;
+    color: white;
+    background: #54DED7;
+    border: none;
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+input[type="submit"]:disabled {
+    pointer-events: none;
+    background: gainsboro !important;
+}
+
+#body {
+    padding: 0 0 100px 0;
+    position: relative;
+    min-height: 100vh;
+}
+
+#header, #fake-header {
+    height: 50px;
+    padding: 0 10px 0 15px;
+    margin: 0;
+    background: linear-gradient(#5F87FA, #57C6E1);
+    /* background: #5F87FA; */
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+#fake-header {
+    position: static;
+    z-index: 0;
+    visibility: hidden;
+}
+
+#header h1 {
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    float: left;
+}
+
+#headermenu {
+    display: inline-block;
+    height: 100%;
+}
+
+#menu {
+    position: relative;
+    height: 100%;
+    display: table;
+    table-layout: fixed;
+    vertical-align: middle;
+    float: right;
+    right: 0;
+}
+
+#menu a {
+    height: 50px;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 10px;
+}
+
+#sidemenu {
+    transition-property: opacity, padding, height;
+    transition-timing-function: ease-in;
+    position: fixed;
+    overflow: hidden;
+    top: 50px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 200;
+}
+
+#sidemenu a {
+    transition-property: background, opacity, padding;
+    height: auto;
+    width: auto;
+    display: block;
+    padding: 0 25px;
+    margin: 0;
+    opacity: 0;
+}
+
+#sidemenu-button {
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    display: table;
+    table-layout: fixed;
+    vertical-align: middle;
+    float: right;
+    right: 0;
+}
+
+#sidemenu-button img {
+    object-fit: contain;
+    /* height: 100%; */
+    height: 50px;
+    /* ↑こう書かないとなぜかChromeで縦長になる… */
+    width: 100%;
+    padding: 10px;
+}
+
+#sidemenu-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#sidemenu-button:hover #sidemenu {
+    padding: 10px 0px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#sidemenu-button:hover #sidemenu a {
+    padding: 10px 25px;
+    opacity: 1;
+}
+
+#account-img {
+    border-radius: 50%;
+}
+
+#mainmenu {
+    display: none;
+}
+
+#header a {
+    text-decoration: none;
+    color: white;
+}
+
+#current {
+    font-weight: bold;
+    color: white;
+}
+
+#other {
+    font-weight: normal;
+    color: white;
+    /* opacity: 0.6; */
+}
+
+#content-frame, #content-frame-login {
+    margin: min(20px, max(calc(5% - 25px), 0px)) min(55px, max(calc(20% - 100px), 0px)) 0;
+    padding: min(20px, 3%) min(25px, 3.75%) min(45px, 6.75%);
+    background: white;
+}
+
+#content-frame-login {
+    margin: min(20px, max(calc(5% - 25px), 0px)) max(calc(50vw - 200px), 0px) 0;
+}
+
+#content {
+    position: relative;
+	text-align: justify;
+}
+
+#content ul {
+    list-style: none;
+    vertical-align: middle;
+    padding-left: min(1em, 1.5%);
+}
+
+#content li {
+    display: table-cell;
+    vertical-align: top;
+}
+
+#content a {
+    text-decoration: none;
+    color: #5F87FA;
+}
+
+#content a:hover {
+    text-decoration: underline;
+}
+
+#introduction {
+    padding: 0 min(20px, 4%) 0;
+    width: 100%;
+}
+
+h2 {
+    border-bottom: solid 3px #54DED7;
+}
+
+#underline-h3 {
+    background: linear-gradient(transparent 70%, #5FFAC7 70%);
+}
+
+p {
+    line-height: 150%;
+    padding-left: min(1em, 1.5%);
+}
+
+#appicon {
+    width: min(170px, 15vw);
+    height: min(170px, 15vw);
+    border-radius: 22%;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/*https://qiita.com/KazuyoshiGoto/items/9a3fdc2091cb4e682e17*/
+#applist a {
+    position: relative;
+    color: #000;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    width: 100%;
+    height: 100%;
+}
+
+#applist a:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 700% 700%;
+    background-image: linear-gradient(-45deg, transparent 40%, rgba(255, 255, 255, 0.5) 55%, transparent 70%);
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+    content: " ";
+    opacity: 0;
+    mix-blend-mode: overlay;
+}
+
+#applist a:hover {
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(0.5, 1.5, 0.5, 2);
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05, 1.05);
+}
+
+#applist a:hover:after {
+    opacity: 1;
+    animation: shine-app 1.5s ease-in-out infinite;
+}
+
+#pic-table {
+    margin-top: 80px;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+#pic-cell {
+    position: relative;
+    width: min(49%, 250px);
+    float: left;
+    margin: min(0.5%, 3px);
+    /* box-sizing: content-box; */
+    overflow: hidden;
+    background: gainsboro;
+}
+
+#pic-cell:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+#pic-cell:hover {
+    opacity: 0.6;
+}
+
+#pic-cell:hover > a > img {
+    transition-duration: 0.5s, 0.1s, 0.1s;
+    transform: scale(1.05, 1.05);
+}
+
+.picture, #img-blur, #img-detail {
+    transition-property: transform, opacity, padding;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    margin: auto;
+    object-fit: cover;
+}
+
+.picture {
+    background: transparent;
+}
+
+#shrink {
+    position: absolute;
+    right: 10px;
+    margin: 0;
+    padding: 8px;
+    height: 50px;
+    width: 50px;
+    background: #69D7F5;
+    border-radius: 50%;
+}
+
+#shrink:hover {
+    opacity: 0.8;
+}
+
+#shrink img {
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+}
+
+/* #shrink-image {
+    height: 100%;
+    width: 100%;
+    background-image: url("/static/images/shrink.png");
+    background-size: contain;
+    pointer-events: none;
+} */
+
+/* input[type="checkbox"]#shrink {
+    opacity: 0;
+    pointer-events: unset;
+}
+
+input[type="checkbox"]#shrink:hover {
+    cursor: pointer;
+} */
+
+/* #shrink:checked ~ #shrink > #shrink-image {
+    background-image: url("/static/images/expand.png");
+}
+
+#shrink:checked ~ #fadeIn-4 > #pic-table > #pic-cell > a > img {
+    object-fit: contain;
+} */
+
+#img-detail-fill {
+    width: 100%;
+    box-sizing: content-box;
+    position: relative;
+    overflow: hidden;
+}
+
+#img-detail-fill:before {
+    content: "";
+    display: block;
+    padding-top: min(100%, calc(90vh - 50px));
+}
+
+#img-blur {
+    object-fit: cover;
+    filter: brightness(125%) blur(min(68px, 20vmin));
+    opacity: 0.6;
+    margin: calc(-1 * min(68px, 20vmin));
+    height: calc(100% + 2 * min(68px, 20vmin));
+    width: calc(100% + 2 * min(68px, 20vmin));
+}
+
+#img-detail {
+    object-fit: contain;
+    background: transparent;
+}
+
+#img-detail:hover {
+    opacity: 1;
+}
+
+#page {
+    display: flex;
+    padding: 0 !important;
+    margin: 40px 0 0;
+    color: gray;
+}
+
+#page-button, #page-button-disabled, #page-index {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#page-button, #page-button-disabled {
+    width: calc(( 100% - 70px ) / 2);
+    color: white !important;
+    background: #54DED7;
+}
+
+#page-button:hover {
+    text-decoration: none !important;
+    opacity: 0.8;
+}
+
+#page-button-disabled {
+    pointer-events: none;
+    background: gainsboro;
+}
+
+#page-index {
+    width: 60px;
+    margin: 0 5px;
+    background: whitesmoke;
+}
+
+#setting-form {
+    display: block;
+    width: min(100%, 300px);
+    /* padding-left: min(1em, 1.5%); */
+    padding: 10px 10px 1px;
+    background: whitesmoke;
+}
+
+#setting-form input[type="text"],
+#setting-form input[type="password"] {
+    font-size: 16px;
+    line-height: 16px;
+	width: 100%;
+    padding: 0.3em;
+    /* padding: 0 0 0 min(1em, 1.5%); */
+	border: 2px solid #69D7F5;
+    border-radius: 3px;
+    margin: 0;
+}
+
+#setting-buttons {
+    display: flex;
+    padding: 0;
+}
+
+#setting-buttons * {
+    display: inline-block;
+    margin: 0% 1%;
+    padding: 0%;
+    width: 48%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #54DED7;
+    color: white !important;
+    border-radius: 0;
+}
+
+#setting-buttons a:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+#alert {
+    margin: 0;
+    color: tomato;
+    line-height: 100%;
+}
+
+#header a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#header h1 a:hover {
+    background: transparent;
+}
+
+#header a:active {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#chat-closed, #chat-opened {
+    transition-duration: 0.2s;
+    transition-property: width, height, border-radius, transform, box-shadow;
+    position: fixed;
+    height: min(20vmin, 100px);
+    width: min(20vmin, 100px);
+    right: min(5vmin, 25px);
+    bottom: min(5vmin, 25px);
+    border-radius: 50%;
+    background-color: orange;
+    z-index: 300;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.4);
+}
+
+#chat-closed:hover {
+    transition-timing-function: ease-out, ease-out, ease-out, cubic-bezier(0.5, 1.5, 0.5, 2), cubic-bezier(0.5, 1.5, 0.5, 2);
+    box-shadow: 0 0 20px -2px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05, 1.05);
+}
+
+#chat-opened {
+    height: min(500px, 98vh);
+    height: min(500px, calc(var(--vh, 1vh) * 98));
+    width: min(300px, 98vw);
+    bottom: max(min(25px, calc(50vh - 250px)), 1vh);
+    bottom:  max(min(25px, calc(var(--vh, 1vh) * 50 - 250px)), var(--vh, 1vh));
+    right: max(min(25px, calc(50vw - 150px)), 1vw);
+    border-radius: 0;
+}
+
+#chat-checkbox {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    border-radius: 50%;
+}
+
+#chat-checkbox:hover {
+    cursor: pointer;
+}
+
+#chat-checkbox:hover + img {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#chat-closed #chat-checkbox,
+#chat-closed #chat-checkbox-image,
+#chat-closed #chat-minimize-image {
+    width: 100%;
+    height: 100%;
+}
+
+#chat-closed #chat-minimize-image {
+    opacity: 0;
+    float: right;
+    right: 0;
+}
+
+#chat-opened #chat-checkbox,
+#chat-opened #chat-checkbox-image,
+#chat-opened #chat-minimize-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 0;
+    float: right;
+    padding: 3%;
+    top: 0;
+}
+
+#chat-opened #chat-minimize-image {
+    opacity: 1;
+    right: 0;
+}
+
+#chat-checkbox-image,
+#chat-minimize-image {
+    transition-duration: 0.2s, 0.2s, 0.2s, 0.2s, 0.1s;
+    transition-property: height, width, padding, opacity, background;
+    padding: 15%;
+    position: absolute;
+    pointer-events: none;
+    opacity: 1;
+    object-fit: contain;
+}
+
+#chat-messages {
+    background: white;
+    height: calc(100% - 100px);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#chat-form {
+    margin: 0;
+}
+
+#chat-text {
+    height: 50px;
+    border-color: orange;
+    border-radius: 0px;
+    margin: 0;
+}
+
+#chat-closed #chat-messages,
+#chat-closed #chat-text {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#chat-opened #chat-messages,
+#chat-opened #chat-text {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#footer {
+    width: 100%;
+    height: 100px;
+    font-size: 14px;
+    font-weight: lighter;
+    position: absolute;
+    bottom: 0;
+    display: table;
+    text-align: center;
+    color: darkgray;
+}
+
+#footer a {
+    text-decoration: none;
+    color: #5F87FA;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+
+#footer p {
+    width: 100%;
+    padding: 10px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 600px) {
+
+    #headermenu {
+        display: none;
+    }
+
+    #mainmenu {
+        display: unset;
+    }
+
+    /* #body {
+        padding-bottom: calc(min(25vmin, 125px) + 100px);
+    }
+
+    #footer {
+        padding-bottom: calc(min(25vmin, 125px) + 10px);
+    } */
+
+}
+
+@media screen and (max-width: 350px) {
+
+    #header h1 {
+        display: none;
+    }
+
+}
+
+#fadeIn-1 {
+    animation: fadeIn-1 1.5s ease-out 0s 1 normal;
+}
+
+#fadeIn-2 {
+    animation: fadeIn-2 1.5s ease-out 0s 1 normal;
+}
+
+#fadeIn-3 {
+    animation: fadeIn-3 1.5s ease-out 0s 1 normal;
+}
+
+#fadeIn-4 {
+    animation: fadeIn-4 1.5s ease-out 0s 1 normal;
+}
+
+@keyframes fadeIn-1 {
+    0% { opacity: 0 }
+    70% { opacity: 1 }
+    100% { opacity: 1 }
+}
+
+@keyframes fadeIn-2 {
+    0% { opacity: 0 }
+    10% { opacity: 0 }
+    80% { opacity: 1 }
+    100% { opacity: 1 }
+}
+
+@keyframes fadeIn-3 {
+    0% { opacity: 0 }
+    20% { opacity: 0 }
+    90% { opacity: 1 }
+    100% { opacity: 1 }
+}
+
+@keyframes fadeIn-4 {
+    0% { opacity: 0 }
+    30% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
+@keyframes shine-app {
+    0% { background-position: 0, 100%; }
+    100% { background-position: 100%, 0; }
+}
+
+
+/*#5F87FA*/
+/*#549CDE*/
+/*#69D7F5*/
+/*#54DED7*/
+/*#5FFAC7*/

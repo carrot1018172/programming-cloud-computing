@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <div id="fadeIn-1"><a href="{{url_for('main', name='picture')}}">＜戻る</a></div>
+    <div id="fadeIn-1"><h2>お絵かき</h2></div>
+    <div id="fadeIn-2">
+        <div id="img-detail-fill">
+            <img id="img-blur" src="{{url_for('static', filename='thumbnails/'+picture+'.png')}}">
+            <img id="img-detail" src="{{url_for('static', filename='images/'+picture+'.png')}}" alt="{{picture}}">
+        </div>
+    </div>
+    <div id="fadeIn-3">
+         <ul id="page">
+            <a
+                {% if back == None %}
+                    id="page-button-disabled"
+                {% else %}
+                    id="page-button" href="{{url_for('picture_detail', name=back)}}"
+                {% endif %}
+            >
+                まえ
+            </a>
+            <li id="page-index">
+                {{index+"/"+maxp}}
+            </li>
+            <a
+                {% if forward == None %}
+                    id="page-button-disabled"
+                {% else %}
+                    id="page-button" href="{{url_for('picture_detail', name=forward)}}"
+                {% endif %}
+            >
+                つぎ
+            </a>
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<a href="{{url_for('main', name='home')}}"
+    {% if path == "home" %}
+        id="current"
+    {% else %}
+        id="other"
+    {% endif %}
+>ホーム</a>
+
+<a href="{{url_for('main', name='release')}}"
+    {% if path == "release" %}
+        id="current"
+    {% else %}
+        id="other"
+    {% endif %}
+>リリース</a>
+
+<a href="{{url_for('main', name='picture')}}"
+    {% if path == "picture" %}
+        id="current"
+    {% else %}
+        id="other"
+    {% endif %}
+>お絵かき</a>

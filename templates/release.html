@@ -1,0 +1,41 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <div id="fadeIn-1"><h2>リリース</h2></div>
+    <div id="fadeIn-2">
+        <p>
+        現在、2つのiOSアプリケーションを公開しています。
+        </p>
+    </div>
+    <p>
+        <ul>
+            <div id="fadeIn-3">
+                <li id="applist">
+                    <a href="https://apps.apple.com/jp/app/%E9%80%9A%E7%9F%A5%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%81%AB%E6%99%82%E9%96%93%E5%89%B2/id1043527256?itscg=30200&amp;itsct=apps_box" id="appicon" target=”_blank”><img src="{{url_for('static', filename='images/Timetable.png')}}" alt="通知センターに時間割" id="appicon"></a>
+                </li>
+                <li id="introduction">
+                    <h3><span id="underline-h3">通知センターに時間割</span></h3>
+                    通知センターのウィジェットに1週間分の時間割を表示できる、とてもシンプルで落ち着いたデザインのアプリです。入力は簡単！クラスメートと時間割をLINEでシェアすれば、さらに入力の手間が省けます。表示する曜日と時限や開始曜日は設定で変更できます。急な時間割変更にも対応。祝日も表示できます。
+                </li>
+            </div>
+        </ul>
+        <ul>
+            <div id="fadeIn-4">
+                <li id="applist">
+                    <a href="https://apps.apple.com/jp/app/twisearcher-twitter%E3%82%92%E6%A4%9C%E7%B4%A2/id1509404826?itscg=30200&amp;itsct=apps_box" id="appicon" target=”_blank”><img src="{{url_for('static', filename='images/Twisearcher.png')}}" alt="TwiSearcher - Twitterを検索" id="appicon"></a>
+                </li>
+                <li id="introduction">
+                    <h3><span id="underline-h3">TwiSearcher</span></h3>
+                    コマンドを打つ必要はありません！自動的にコマンドを生成し、Twitterで検索できます。<br>
+                    ・アカウントから絞る<br>
+                    ・ツイートされた日時で絞る<br>
+                    ・画像・動画など、ツイートの種類で絞る<br>
+                    ・いいね・リツイート・リプライ数で絞る<br>
+                    ・ツイートされた位置で絞る
+                </li>
+            </div>
+        </ul>
+    </p>
+
+{% endblock %}

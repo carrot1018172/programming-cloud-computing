@@ -1,0 +1,13 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <div id="fadeIn-1"><h2>{{ data["title"] }}</h2></div>
+    <div id="fadeIn-2">
+        <p>
+        {{ data["contents"] }}
+        <a href="{{url_for('main', name='home')}}">ホームに戻る</a>
+        </p>
+    </div>
+
+{% endblock %}

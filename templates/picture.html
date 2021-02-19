@@ -1,0 +1,29 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/picture.js')}}"></script>
+
+    <div id="fadeIn-1"><h2>お絵かき</h2></div>
+    <div id="fadeIn-2">
+        <p>
+            温かい目で見てください
+        </p>
+    </div>
+    <div id="fadeIn-3" style="display: inline;">
+        <!-- <input type="checkbox" id="shrink"> -->
+        <a id="shrink" href="javascript:void(0);" onclick="changeImageFit(this);"><img src="{{url_for('static', filename='images/shrink.png')}}"></img></a>
+        <div id="fadeIn-4">
+            <div id="pic-table">
+                {% for picture in pictures %}
+                    <div id="pic-cell">
+                        <a href="{{url_for('picture_detail', name=picture)}}">
+                            <img class="picture" src="{{url_for('static', filename='thumbnails/'+picture+'.png')}}">
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

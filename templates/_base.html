@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            {% set path = request.path.split("/")[1] %}
+            {% set title_dic = {"home": "ホーム", "release": "リリース", "picture": "お絵かき", "about": "このサイトについて", "login": "ログイン", "apply": "新規登録", "setting": "アカウント情報", "404": "404", "withdrew": "退会完了"} %}
+            {% if path in title_dic %}
+                {{ title_dic[path] }} -
+            {% endif %}
+             本西亮太のウェブページ</title>
+        <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='stylesheets/glike.css')}}">
+        <link rel="icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+        <link rel="apple-touch-icon" href="{{url_for('static', filename='images/favicon.png')}}">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="robots" content="noindex">
+        <script src="{{url_for('static', filename='scripts/jquery-3.5.1.min.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='scripts/chat.js')}}"></script>
+    </head>
+    <body ontouchstart="">
+        <div id="body">
+            <div id="header">
+                <h1><a href="{{url_for('main', name='home')}}">本西亮太のウェブページ</a></h1>
+                <div id="menu">
+                    <div id="headermenu">
+                        {% include "mainmenu.html" %}
+                    </div>
+                    <div id="sidemenu-button">
+                        {% if "loginaccount" in session %}
+                            <img id="account-img" src="{{url_for('static', filename='images/accountimg.png')}}">
+                        {% else %}
+                            <img src="{{url_for('static', filename='images/login.png')}}">
+                        {% endif %}
+                            <div id="sidemenu">
+                                {% include "accountmenu.html" %}
+                            </div>
+                    </div>
+                    <div id="sidemenu-button">
+                        <img src="{{url_for('static', filename='images/menu.png')}}">
+                        <div id="sidemenu">
+                            <div id="mainmenu">
+                                {% include "mainmenu.html" %}
+                            </div>
+                            <div id="submenu">
+                                {% include "submenu.html" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="fake-header">
+            </div>
+            {% if "loginaccount" in session %}
+                <div id="chat-closed">
+                    <img id="chat-checkbox-image" src="{{url_for ('static', filename='images/chat.png')}}">
+                    <input id="chat-checkbox" type="checkbox" onchange="checkboxChanged(this);">
+                    <img id="chat-minimize-image" src="{{url_for ('static', filename='images/minimize.png')}}">
+                    <iframe id="chat-messages" src="{{url_for('main', name='messages')}}"></iframe>
+                    <form id = "chat-form" method="post" action="{{url_for('message_post')}}" onsubmit="submitMessage(this); return false;">
+                        <input id="chat-text" type="text" name="message" placeholder="Enterで送信">
+                    </form>
+                </div>
+            {% endif %}
+            <div id=
+                {% if path in ["login", "apply"] %}
+                    "content-frame-login"
+                {% else %}
+                    "content-frame"
+                {% endif %}
+            >
+                <div id="content">
+                    <noscript>
+                        このWebサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。
+                        <a href="https://www.enable-javascript.com/ja/">
+                            あなたのWebブラウザーでJavaScriptを有効にする方法
+                        </a>
+                        を参照してください。
+                    </noscript>
+                    <div id="alert">
+                        {{ alert_message if alert_message != None }}
+                    </div>
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div id="footer">
+                <p>
+                    Ryota Motonishi<br>
+                    一部のアイコンは、<a href="https://icons8.jp" target="_blank">icons8</a>から利用しています。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

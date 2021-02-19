@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/apply.js')}}"></script>
+
+    <div id="fadeIn-1"><h2>新規登録</h2></div>
+    {% if "loginaccount" in session %}
+        <div id="fadeIn-2">
+            <p>
+                ログイン済みです。
+            </p>
+        </div>
+    {% else %}
+        <form method="post" action="">
+            <div id="fadeIn-2">
+                アカウント名<br><input type="text" name="account" oninput="inputChanged()"/ required>
+                {% if displayname %}
+                    Already exists.
+                {% endif %}
+                <br><br>
+                パスワード<br><input type="password" name="password" oninput="inputChanged()"/ required><br>
+                パスワードを確認<br><input type="password" oninput="inputChanged()"/ required>
+                <p id="alert"></p>
+                <br>
+                表示名<br><input type="text" name="displayname" value=
+                    {% if displayname %}
+                        {{ displayname }}
+                    {% else %}
+                        ""
+                    {% endif %}
+                oninput="inputChanged()"/ required><br><br>
+            </div>
+            <div id="fadeIn-3">
+                <input type="submit" value="作成"/>
+            </div>
+        </form>
+    {% endif %}
+
+{% endblock %}

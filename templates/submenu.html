@@ -1,0 +1,7 @@
+<a href="{{url_for('main', name='about')}}"
+    {% if path == "about" %}
+        id="current"
+    {% else %}
+        id="other"
+    {% endif %}
+>このサイトについて</a>

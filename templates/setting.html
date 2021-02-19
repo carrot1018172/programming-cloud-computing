@@ -1,0 +1,86 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/setting.js')}}"></script>
+
+    <div id="fadeIn-1"><h2>アカウント情報</h2></div>
+    {% if "loginaccount" in session %}
+
+        <div id="fadeIn-2">
+
+            <h3><span id="underline-h3">アカウント名</span></h3>
+            <p>
+                {{user["account"]}}
+                <a onclick="changeClicked(this);">変更</a>
+            </p>
+            <form id="setting-form" method="post" action="" style="display: none;">
+                <input type="text" name="new_account" oninput="inputChanged(this);" value=
+                    {{user["account"]}}
+                placeholder="新しいアカウント名" / required>
+                <input type="password" name="password" oninput="inputChanged(this);" placeholder="確認のためパスワードを入力" / required>
+                <ul id="setting-buttons">
+                    <input type="submit" value="変更"/>
+                    <a onclick="cancelClicked(this);">キャンセル</a>
+                </ul>
+            </form>
+
+            <h3><span id="underline-h3">パスワード</span></h3>
+            <p>
+                ******
+                <a onclick="changeClicked(this);">変更</a>
+            </p>
+            <form id="setting-form" method="post" action="" style="display: none;">
+                <input type="password" name="password" oninput="inputChanged(this);" placeholder="現在のパスワード" / required>
+                <input type="password" name="new_password" oninput="inputChanged(this);" placeholder="新しいパスワード" / required>
+                <input type="password" oninput="inputChanged(this);" placeholder="新しいパスワードを確認" / required>
+                <p id="alert"></p>
+                <ul id="setting-buttons">
+                    <input type="submit" value="変更"/>
+                    <a onclick="cancelClicked(this);">キャンセル</a>
+                </ul>
+            </form>
+
+            <h3><span id="underline-h3">表示名</span></h3>
+            <p>
+                {{user["displayname"]}}
+                <a onclick="changeClicked(this);">変更</a>
+            </p>
+            <form id="setting-form" method="post" action="" style="display: none;">
+                <input type="text" name="new_displayname" oninput="inputChanged(this);" value=
+                    {{user["displayname"]}}
+                placeholder="新しい表示名" / required>
+                <ul id="setting-buttons">
+                    <input type="submit" value="変更"/>
+                    <a onclick="cancelClicked(this);">キャンセル</a>
+                </ul>
+            </form>
+        </div>
+
+        <div id="fadeIn-3"><h2>その他</h2></div>
+        <div id="fadeIn-4">
+            <p>
+                <a onclick="changeClicked(this);">退会</a>
+            </p>
+            <form id="setting-form" method="post" action="" style="display: none;">
+                退会<br><br>
+                <!-- <input id="withdraw-checkbox" type="checkbox" name="withdraw" oninput="inputChanged(this);" required>
+                <label for="withdraw-checkbox">退会する</label> -->
+                <input type="hidden" name="withdraw">
+                <input type="password" name="password" oninput="inputChanged(this);" placeholder="確認のためパスワードを入力" / required>
+                <ul id="setting-buttons">
+                    <input type="submit" value="退会する"/>
+                    <a onclick="cancelClicked(this);">キャンセル</a>
+                </ul>
+            </form>
+        </div>
+
+    {% else %}
+        <div id="fadeIn-2">
+            <p>
+                ログインしていません。
+            </p>
+        </div>
+    {% endif %}
+
+{% endblock %}
