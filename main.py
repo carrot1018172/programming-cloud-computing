@@ -131,18 +131,14 @@ def mes_fragment():
     messages = get_db_ref("messages")
     messages_array = None
 
-    is_from = None
-
     if arg_from is None and arg_until is None:
         # 一応実装したけど使わない
         messages = messages.order_by("time", direction=firestore.Query.DESCENDING).limit(arg_n).stream()
         messages_array = list(reversed([message.to_dict() for message in messages]))
     elif arg_until is None:
-        is_from = True
         messages = messages.order_by("time", direction=firestore.Query.ASCENDING).where("time", ">", float(arg_from)).stream()
         messages_array = [message.to_dict() for message in messages]
     elif arg_from is None:
-        is_from = False
         messages = messages.order_by("time", direction=firestore.Query.DESCENDING).where("time", "<", float(arg_until)).limit(arg_n).stream()
         messages_array = list(reversed([message.to_dict() for message in messages]))
     else:
